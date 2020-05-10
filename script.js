@@ -7,7 +7,7 @@ function imageCache(base, firstNum, lastNum) {
     var img;
     for (var i = firstNum; i <= lastnum; i++) {
         img = new Image();
-        img.src = base + i + ".jpg";
+        img.src = base + i + ".png";
         this.cache.push(img);
     }
 }
