@@ -1,8 +1,11 @@
-      body {
-        font-family: 'Nanum Pen Script', cursive;
-        font-size: 12px;
-        background-color: #f8f1a4
-      }
-      div.a {
-        text-align: center;
-      }
+.header {
+      font-size: 7vw;
+}
+body {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 12px;
+      background-color: #f8f1a4
+}
+div.a {
+      text-align: center;
+}
