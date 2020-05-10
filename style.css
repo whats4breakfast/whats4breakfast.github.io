@@ -3,9 +3,9 @@
 }
 body {
       font-family: 'Nanum Pen Script', cursive;
-      font-size: 12px;
+      text-align: center;
       background-color: #f8f1a4
 }
 div.a {
-      text-align: center;
+      font-size: 12px;
 }
