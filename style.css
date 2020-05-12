@@ -1,21 +1,39 @@
+@font-face {font-family: Nanum; src:url('fonts/nanum.ttf');}
+@font-face {font-family: Gaegu; src:url('fonts/gaegu.ttf');}
+
 .header {
-      font-size: 48px;
+	font-size: 48px;
+	font-family: 'Nanum', cursive;
+	text-align: center;
+}
+.footer {
+	font-family: 'Gaegu';
 }
 body {
-      font-family: 'Nanum Pen Script', cursive;
-      text-align: center;
-      background-color: #f8f1a4
+	background-color: #f8f1a4
 }
 div.a {
-      font-size: 36px;
+	font-size: 36px;
+	text-align: center;
 }
 div.grow img{
-transition: 0.05s ease;
+	transition: 0.1s ease;
 }
 
 div.grow img:hover{
--webkit-transform: scale(1.1);
--ms-transform: scale(1.1);
-transform: scale(1.1);
-transition: 0.05s ease;
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	transform: scale(1.2);
+	transition: 0.1s ease;
+}
+
+div.brightness img{
+	transition: 0.3s ease;
+	background-color: #f8f1a4;
+	display: inline-block;
+
+}
+div.brightness img:hover {
+	opacity: .5;
+	transition: 0.3s ease;
 }
