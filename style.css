@@ -9,11 +9,11 @@ body {
 div.a {
       font-size: 36px;
 }
-.grow img{
+div.grow img{
 transition: 1s ease;
 }
 
-.grow img:hover{
+div.grow img:hover{
 -webkit-transform: scale(1.2);
 -ms-transform: scale(1.2);
 transform: scale(1.2);
