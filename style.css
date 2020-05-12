@@ -1,12 +1,12 @@
 @font-face {font-family: Nanum; src:url('fonts/nanum.ttf');}
 @font-face {font-family: Gaegu; src:url('fonts/gaegu.ttf');}
 
-.header {
+div.header {
 	font-size: 48px;
 	font-family: 'Nanum';
 	text-align: center;
 }
-.footer {
+div.footer {
 	font-family: 'Gaegu';
 }
 body {
