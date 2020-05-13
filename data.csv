@@ -1,8 +1,5 @@
-year,population
-2006,40
-2008,45
-2010,48
-2012,51
-2014,53
-2016,57
-2017,62
+city,population,area
+New York,3400,210
+Melbourne,1200,350
+Tokyo,5200,125
+Paris,800,70
