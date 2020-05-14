@@ -6,6 +6,9 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <style>
 
+    @font-face {font-family: Gaegu; src: url('fonts/gaegu.ttf');}
+
+
     html, body {
       margin: 0;
       padding: 0;
@@ -14,15 +17,15 @@
     }
 
     text {
-      font-family: arial;
+      font-family: 'Gaegu';
       font-size: 12px;
     }
 
 
     path.line {
       fill: none;
-      stroke: red;
-      stroke-width: 3px;
+      stroke: lightblue;
+      stroke-width: 2px;
     }
 
     .axis path,
@@ -57,11 +60,11 @@
 
 
     d3.csv("lc_data_mod.csv")
-    .row(function(d) { return { month: parseDate(d.month), word_count: Number(d.word_count)}; })
+    .row(function(d) { return { date: parseDate(d.date), word_count: Number(d.word_count)}; })
     .get(function(error, rows) {
       max = d3.max(rows, function(d) { return d.word_count; });
-      minDate = d3.min(rows, function(d) {return d.month; });
-      maxDate = d3.max(rows, function(d) { return d.month; });
+      minDate = d3.min(rows, function(d) {return d.date; });
+      maxDate = d3.max(rows, function(d) { return d.date; });
 
 
       var y = d3.scaleLinear()
@@ -77,8 +80,8 @@
       var xAxis = d3.axisBottom(x);
 
       var line = d3.line()
-      .x(function(d){ return x(d.month); })
-      .y(function(d){ return y(d.price); })
+      .x(function(d){ return x(d.date); })
+      .y(function(d){ return y(d.word_count); })
       .curve(d3.curveCardinal);
 
 
