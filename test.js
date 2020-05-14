@@ -1,4 +1,4 @@
-d3.csv('./data/atp_wta.csv')
+d3.csv('../data/atp_wta.csv')
     .then(makeChart);
 
     function makeChart(players) {
