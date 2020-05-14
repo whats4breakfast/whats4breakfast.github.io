@@ -1,4 +1,4 @@
-d3.csv('atp_wta.csv')
+d3.csv('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2814973/atp_wta.csv')
     .then(makeChart);
 
     function makeChart(players) {
