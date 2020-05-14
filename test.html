@@ -3,114 +3,59 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   <title>Line chart from CSV using d3.js</title>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="chart.min.js"></script>
+  <script src="d3.min.js"></script>
   <style>
 
     @font-face {font-family: Gaegu; src: url('fonts/gaegu.ttf');}
 
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-    }
-
-    text {
+    
+    body {
       font-family: 'Gaegu';
       font-size: 14px;
-    }
-
-
-    path.line {
-      fill: none;
-      stroke: lightblue;
-      stroke-width: 2px;
-    }
-
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: black;
-      shape-rendering: crispEdges;
-      stroke-width: 2px;
     }
   </style>
 </head>
 <body>
+  <canvas id="chart"></canvas>
+  <script>
+    d3.csv('atp_wta.csv')
+    .then(makeChart);
 
-  <script type="text/javascript">
-
-    var parseDate = d3.timeParse("%Y-%m-%d");
-
-    var margin = {left: 50, right: 20, top: 20, bottom: 50 };
-
-    var width = 960 - margin.left - margin.right;
-    var height = 500 - margin.top - margin.bottom;
-
-
-    var max = 0;
-
-    var xNudge = 50;
-    var yNudge = 30;
-
-    var minDate = new Date();
-    var maxDate = new Date();
-
-
-
-
-    d3.csv("lc_data_mod.csv")
-    .row(function(d) { return { date: parseDate(d.date), word_count: Number(d.word_count)}; })
-    .get(function(error, rows) {
-      max = d3.max(rows, function(d) { return d.word_count; });
-      minDate = d3.min(rows, function(d) {return d.date; });
-      maxDate = d3.max(rows, function(d) { return d.date; });
-
-
-      var y = d3.scaleLinear()
-      .domain([0,max])
-      .range([height,0]);
-
-      var x = d3.scaleTime()
-      .domain([minDate,maxDate])
-      .range([0,width]);
-
-      var yAxis = d3.axisLeft(y);
-
-      var xAxis = d3.axisBottom(x);
-
-      var line = d3.line()
-      .x(function(d){ return x(d.date); })
-      .y(function(d){ return y(d.word_count); })
-      .curve(d3.curveCardinal);
-
-
-      var svg = d3.select("body").append("svg").attr("id","svg").attr("height","100%").attr("width","100%");
-      var chartGroup = svg.append("g").attr("class","chartGroup").attr("transform","translate("+xNudge+","+yNudge+")");
-
-      chartGroup.append("path")
-      .attr("class","line")
-      .attr("d",function(d){ return line(rows); })
-
-
-      chartGroup.append("g")
-      .attr("class","axis x")
-      .attr("transform","translate(0,"+height+")")
-      .call(xAxis);
-
-      chartGroup.append("g")
-      .attr("class","axis y")
-      .call(yAxis);
-
-
-
-    });
-
-
-
-
-
+    function makeChart(players) {
+      var playerLabels = players.map(function(d) {return d.Name});
+      var weeksData = players.map(function(d) {return d.Weeks});
+      var playerColors = players.map(function(d) {return d.Gender === 'Female' ? '#F15F36' : '#19A0AA';});
+      var chart = new Chart('chart', {
+        type: 'horizontalBar',
+        options: {
+          maintainAspectRatio: true,
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: 'Weeks at No.1',
+                fontSize: 16
+              }
+            }
+            ]
+          }
+        },
+        data: {
+          labels: playerLabels,
+          datasets: [
+          {
+            data: weeksData,
+            backgroundColor: playerColors
+          }
+          ]
+        }
+      });
+    }
   </script>
 </body>
 
