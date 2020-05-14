@@ -1,8 +1,17 @@
 @font-face {font-family: Nanum; src: url('fonts/nanum.ttf');}
 @font-face {font-family: Gaegu; src: url('fonts/gaegu.ttf');}
 
-div.header {
-	font-size: 48px;
+html {
+	height: 100%;
+	min-height: 100%;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.header {
+	font-size: 36px;
+	padding: 60px;
 	font-family: 'Gaegu';
 	text-align: center;
 }
@@ -12,12 +21,14 @@ div.footer {
 	font-size: 20px;
 }
 body {
-	background-color: #f8f1a4
+	width: 100%;
+	background-image: linear-gradient(to bottom, #f8f1a4,#fbf8d0);
+	background-size: cover;
 }
 div.menu {
-	font-size: 36px;
 	text-align: center;
-	font-family: 'Gaegu';
+	width: 100%;
+	padding: 12px 0;
 }
 div.grow img{
 	transition: 0.1s ease;
@@ -32,7 +43,6 @@ div.grow img:hover{
 
 div.brightness img{
 	transition: 0.3s ease;
-	background-color: #f8f1a4;
 	display: inline-block;
 
 }
