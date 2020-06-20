@@ -6,7 +6,7 @@ d3.csv('../data/atp_wta.csv')
       var weeksData = players.map(function(d) {return d.Weeks});
       var playerColors = players.map(function(d) {return d.Gender === 'Female' ? '#F15F36' : '#19A0AA';});
       var chart = new Chart('chart', {
-        type: 'horizontalBar',
+        type: 'scatter',
         options: {
           maintainAspectRatio: true,
           legend: {
