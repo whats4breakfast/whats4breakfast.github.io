@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-  <title>Line chart from CSV using d3.js</title>
-  <script src="../js/chart.min.js"></script>
-  <script src="../js/d3.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Pokemon Data</title>
+	<script src="../js/chart.min.js"></script>
+	<script src="../js/d3.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
 </head>
 <body>
-  <canvas id="chart"></canvas>
-  <p>if you insist!</p>
-  <script src="../js/lewis_clark.js"></script>
+	<canvas id="chart"></canvas>
+	<p>if you insist!</p>
+	<!-- <script src="../js/lewis_clark.js"></script> -->
+	<script> 
+		var scatterChart = new Chart('chart', {
+			type: 'line',
+			data: {
+				datasets: [{
+					label: 'Line Dataset',
+					data: [{
+						x: 1,
+						y: 2
+					}, {
+						x: 2,
+						y: 10
+					}, {
+						x: 3,
+						y: 5
+					}]
+				}]
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						type: 'linear',
+						position: 'bottom'
+					}]
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Line chart from CSV using d3.js</title>
+	<script src="../js/chart.min.js"></script>
+	<script src="../js/d3.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
+</head>
+<body>
+	<canvas id="chart"></canvas>
+	<p>if you insist!</p>
+	<!-- <script src="../js/lewis_clark.js"></script> -->
+	<script> 
+		d3.csv('../data/types.csv').then(makeChart);
+
+		function makeChart(types){
+			// types: array of objects where each object represents a type
+			var typeLabels = types.map(function(d) {return d.type});
+			var countData = types.map(function(d) {return d.count});
+			var options = {
+				maintainAspectRatio:true,
+				legend: {
+					display:false
+				},
+				scales: {
+					xAxes: [{
+						gridLines: {
+							display:false
+						}
+					}]
+				}
+			}
+			var chart = new Chart('chart', {
+				type: 'bar',
+				data: {
+					labels: typeLabels,
+					datasets: [
+					{
+						data: countData,
+						backgroundColor: '#b3ffff'
+					}]
+				},
+				options: options
+			});
+		}
+	</script>
+</body>
+
+</html>
