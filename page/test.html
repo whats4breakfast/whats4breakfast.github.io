@@ -9,33 +9,49 @@
 </head>
 <body>
 	<canvas id="chart"></canvas>
+	<canvas id="shart2"></canvas>
 	<p>if you insist!</p>
-	<!-- <script src="../js/lewis_clark.js"></script> -->
 	<script> 
-		var scatterChart = new Chart('chart', {
-			type: 'line',
-			data: {
-				datasets: [{
-					label: 'Line Dataset',
-					data: [{
-						x: 1,
-						y: 2
-					}, {
-						x: 2,
-						y: 10
-					}, {
-						x: 3,
-						y: 5
-					}]
-				}]
-			},
-			options: {
+		d3.csv('../data/types.csv').then(makeChart);
+		
+		function makeChart(types){
+			var typeLabels = types.map(function(d) {return d.type});
+			var countData = types.map(function(d) {return d.count});
+			var options = {
+				maintainAspectRatio:false,
+				responsive: true,
+				legend: {
+					display:false
+				},
 				scales: {
 					xAxes: [{
-						type: 'linear',
-						position: 'bottom'
+						gridLines: {
+							display:false
+						}
 					}]
 				}
+			}
+			var typeChart = new Chart('chart', {
+				type: 'bar',
+				data: {
+					labels: typeLabels,
+					datasets: [
+					{
+						data: countData,
+						backgroundColor: '#b3ffff'
+					}]
+				},
+				options: options
+			});
+		}
+
+		var baseStatsChart2 = new Chart('shart2', {
+			type: 'radar',
+			data: {
+				labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
+				datasets: [{
+					data: [20, 10, 4, 2]
+				}]
 			}
 		});
 	</script>

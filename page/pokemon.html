@@ -1,3 +1,8 @@
+<!-- 
+cd C:\Users\Family\Documents\GitHub\whats4breakfast.github.io
+then run:
+npx http-server
+from anaconda cmd prompt -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,43 +13,27 @@
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
 </head>
 <body>
-	<canvas id="chart"></canvas>
-	<p>if you insist!</p>
-	<!-- <script src="../js/lewis_clark.js"></script> -->
-	<script> 
-		d3.csv('../data/types.csv').then(makeChart);
-
-		function makeChart(types){
-			// types: array of objects where each object represents a type
-			var typeLabels = types.map(function(d) {return d.type});
-			var countData = types.map(function(d) {return d.count});
-			var options = {
-				maintainAspectRatio:true,
-				legend: {
-					display:false
-				},
-				scales: {
-					xAxes: [{
-						gridLines: {
-							display:false
-						}
-					}]
-				}
-			}
-			var chart = new Chart('chart', {
-				type: 'bar',
-				data: {
-					labels: typeLabels,
-					datasets: [
-					{
-						data: countData,
-						backgroundColor: '#b3ffff'
-					}]
-				},
-				options: options
-			});
-		}
-	</script>
+	<div class="content">
+		<div class="chart1", style="position:aboslute; top:60px; left:10px; width:500px; height:500px;">
+			<canvas id="chart"></canvas>
+		</div>
+		<p>test text</p>
+		<div class="chart2", style="position:aboslute; top:60px; left:10px; width:500px; height:500px;">
+			<canvas id="shart"></canvas>
+		</div>
+	</div>
+	<div class="menu">
+		<select id="gen">
+			<option value="1">Gen 1</option>
+			<option value="2">Gen 2</option>
+			<option value="3">Gen 3</option>
+			<option value="4">Gen 4</option>
+			<option value="5">Gen 5</option>
+			<option value="6">Gen 6</option>
+			<option value="7">Gen 7</option>
+		</select>
+	</div>
+	<script src="../js/pokemon.js"></script>
 </body>
 
 </html>
