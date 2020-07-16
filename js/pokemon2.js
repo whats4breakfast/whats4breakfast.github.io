@@ -112,7 +112,7 @@ document.getElementById('gen').addEventListener('click',
 			data: {
 				labels: ['HP', 'Attack', 'Defense', 'Sp. Attack','Sp. Defense','Speed'],
 				datasets: [{
-					data: genData('bug')
+					data: genData('electric')
 				}]
 			},
 			options: {
@@ -133,16 +133,9 @@ document.getElementById('gen').addEventListener('click',
 					},
 					ticks: {
 						suggestedMin: 0,
-						suggestedMax: 140
+						suggestedMax: 90
 					}
 				}
 			}
 		});
-		document.getElementById('type').addEventListener('click',
-			function() {
-				typeStatsChart.data.datasets.forEach(function(dataset) {
-					dataset.data = genData(type.value);
-				});
-				typeStatsChart.update();
-			}
-		)}
+	}
