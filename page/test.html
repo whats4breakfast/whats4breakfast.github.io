@@ -3,58 +3,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<title>Pokemon Data</title>
-	<script src="../js/chart.min.js"></script>
 	<script src="../js/d3.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
+	<script type= "module", src="../node_modules/chart.js"></script>
 </head>
 <body>
-	<canvas id="chart"></canvas>
-	<canvas id="shart2"></canvas>
 	<p>if you insist!</p>
-	<script> 
-		d3.csv('../data/types.csv').then(makeChart);
-		
-		function makeChart(types){
-			var typeLabels = types.map(function(d) {return d.type});
-			var countData = types.map(function(d) {return d.count});
-			var options = {
-				maintainAspectRatio:false,
-				responsive: true,
-				legend: {
-					display:false
-				},
-				scales: {
-					xAxes: [{
-						gridLines: {
-							display:false
-						}
-					}]
-				}
-			}
-			var typeChart = new Chart('chart', {
-				type: 'bar',
-				data: {
-					labels: typeLabels,
-					datasets: [
-					{
-						data: countData,
-						backgroundColor: '#b3ffff'
-					}]
-				},
-				options: options
-			});
-		}
-
-		var baseStatsChart2 = new Chart('shart2', {
-			type: 'radar',
-			data: {
-				labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
-				datasets: [{
-					data: [20, 10, 4, 2]
-				}]
-			}
-		});
-	</script>
+	<script src="../js/pokemon2.js"></script>
 </body>
 
 </html>
