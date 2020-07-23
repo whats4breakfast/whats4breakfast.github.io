@@ -12,33 +12,32 @@ function typeCount(pk){
 
 	console.log(types1.filter(distinct));
 
-}
 
-var typeChart = new Chart('chart', {
-	type: 'bar',
-	data: {
-		labels: typeLabels,
-		datasets: [
-		{
-			data: countData,
-			backgroundColor: '#b3ffff'
-		}]
-	},
-	options = {
-		maintainAspectRatio:false,
-		responsive: true,
-		legend: {
-			display:false
-		},
-		scales: {
-			xAxes: [{
-				gridLines: {
-					display:false
-				}
+	var typeChart = new Chart('chart', {
+		type: 'bar',
+		data: {
+			labels: typeLabels,
+			datasets: [
+			{
+				data: countData,
+				backgroundColor: '#b3ffff'
 			}]
+		},
+		options = {
+			maintainAspectRatio:false,
+			responsive: true,
+			legend: {
+				display:false
+			},
+			scales: {
+				xAxes: [{
+					gridLines: {
+						display:false
+					}
+				}]
+			}
 		}
-	}
-});
+	});
 }*/
 
 function typeAvgStats(pkmn) {
@@ -118,7 +117,7 @@ function typeAvgStats(pkmn) {
 	document.getElementById('type').addEventListener('click',
 		function() {
 			avgStatsChart.data.datasets.forEach(function(dataset) {
-				dataset.data = getAvgStats(typ.value);
+				dataset.data = getAvgStats(type.value);
 			});
 			avgStatsChart.update();
 		}
