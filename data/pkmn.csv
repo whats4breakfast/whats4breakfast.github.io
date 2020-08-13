@@ -772,7 +772,7 @@ pokedex_number,name,hp,attack,defense,sp_attack,sp_defense,speed,base_total,type
 771,Pyukumuku,55,60,130,30,130,5,410,water,,1.2,7,0,0,60,800000,0
 772,Type: Null,95,95,95,95,95,59,534,normal,,120.5,7,0,0,3,1250000,1
 773,Silvally,95,95,95,95,95,95,570,normal,,100.5,7,0,0,3,1250000,2
-774,Minior,60,100,60,100,60,120,500,rock,flying,40,7,0,0,30 (Meteorite)255 (Core),1059860,0
+774,Minior,60,100,60,100,60,120,500,rock,flying,40,7,0,0,30,1059860,0
 775,Komala,65,115,65,75,95,65,480,normal,,19.9,7,0,0,45,1250000,0
 776,Turtonator,60,78,135,91,85,36,485,fire,dragon,212,7,0,0,70,1000000,0
 777,Togedemaru,65,98,63,40,73,96,435,electric,steel,3.3,7,0,0,180,1000000,0
