@@ -1,6 +1,7 @@
 d3.csv("../data/pkmn.csv").then(typeCount);
 d3.csv("../data/pkmn.csv").then(typeAvgStats);
 d3.csv("../data/pkmn.csv").then(typeGenCapRate);
+d3.csv("../data/pkmn.csv").then(genCount);
 
 // bar chart
 
@@ -28,7 +29,7 @@ function typeCount(pkmn){
 			datasets: [
 			{
 				data: ctSortVals,
-				backgroundColor: '#b3ffff'
+				backgroundColor: 'rgba(231, 137, 90)'
 			}]
 		},
 		options: {
@@ -129,88 +130,120 @@ function typeAvgStats(pkmn) {
 			});
 			avgStatsChart.update();
 		}
-		)}
+		)
+}
 
-	function typeGenCapRate(pkmn) {
+function typeGenCapRate(pkmn) {
 
-		var cap = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
-		var count = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+	var cap = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+	var count = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
 
-		pkmn.forEach(e => {
-			if(e.is_legendary==0){
-				if(e.generation==1){
-					cap[0][0] += Number(e.capture_rate);
-					count[0][0] ++;
-				} else if (e.generation==2) {
-					cap[0][1] += Number(e.capture_rate);
-					count[0][1] ++;
-				} else if (e.generation==3) {
-					cap[0][2] += Number(e.capture_rate);
-					count[0][2] ++;
-				} else if (e.generation==4) {
-					cap[0][3] += Number(e.capture_rate);
-					count[0][3] ++;
-				} else if (e.generation==5) {
-					cap[0][4] += Number(e.capture_rate);
-					count[0][4] ++;
-				} else if (e.generation==6) {
-					cap[0][5] += Number(e.capture_rate);
-					count[0][5] ++;
-				} else if(e.generation==7) {
-					cap[0][6] += Number(e.capture_rate);
-					count[0][6] ++;
-				} else;
-			} else if (e.is_legendary==1){
-				if(e.generation==1){
-					cap[1][0] += Number(e.capture_rate);
-					count[1][0] ++;
-				} else if (e.generation==2) {
-					cap[1][1] += Number(e.capture_rate);
-					count[1][1] ++;
-				} else if (e.generation==3) {
-					cap[1][2] += Number(e.capture_rate);
-					count[1][2] ++;
-				} else if (e.generation==4) {
-					cap[1][3] += Number(e.capture_rate);
-					count[1][3] ++;
-				} else if (e.generation==5) {
-					cap[1][4] += Number(e.capture_rate);
-					count[1][4] ++;
-				} else if (e.generation==6) {
-					cap[1][5] += Number(e.capture_rate);
-					count[1][5] ++;
-				} else if(e.generation==7) {
-					cap[1][6] += Number(e.capture_rate);
-					count[1][6] ++;
-				} else;
+	pkmn.forEach(e => {
+		if(e.is_legendary==0){
+			if(e.generation==1){
+				cap[0][0] += Number(e.capture_rate);
+				count[0][0] ++;
+			} else if (e.generation==2) {
+				cap[0][1] += Number(e.capture_rate);
+				count[0][1] ++;
+			} else if (e.generation==3) {
+				cap[0][2] += Number(e.capture_rate);
+				count[0][2] ++;
+			} else if (e.generation==4) {
+				cap[0][3] += Number(e.capture_rate);
+				count[0][3] ++;
+			} else if (e.generation==5) {
+				cap[0][4] += Number(e.capture_rate);
+				count[0][4] ++;
+			} else if (e.generation==6) {
+				cap[0][5] += Number(e.capture_rate);
+				count[0][5] ++;
+			} else if(e.generation==7) {
+				cap[0][6] += Number(e.capture_rate);
+				count[0][6] ++;
 			} else;
-		});
+		} else if (e.is_legendary==1){
+			if(e.generation==1){
+				cap[1][0] += Number(e.capture_rate);
+				count[1][0] ++;
+			} else if (e.generation==2) {
+				cap[1][1] += Number(e.capture_rate);
+				count[1][1] ++;
+			} else if (e.generation==3) {
+				cap[1][2] += Number(e.capture_rate);
+				count[1][2] ++;
+			} else if (e.generation==4) {
+				cap[1][3] += Number(e.capture_rate);
+				count[1][3] ++;
+			} else if (e.generation==5) {
+				cap[1][4] += Number(e.capture_rate);
+				count[1][4] ++;
+			} else if (e.generation==6) {
+				cap[1][5] += Number(e.capture_rate);
+				count[1][5] ++;
+			} else if(e.generation==7) {
+				cap[1][6] += Number(e.capture_rate);
+				count[1][6] ++;
+			} else;
+		} else;
+	});
 
-		var capGen = [cap[0].map(function(n,i){return n/count[0][i];}),cap[1].map(function(n,i){return n/count[1][i];})]
+	var capGen = [cap[0].map(function(n,i){return n/count[0][i];}),cap[1].map(function(n,i){return n/count[1][i];})]
 
-		console.log(capGen);
-
-		var avgStatsChart = new Chart('bart', {
-			type: 'line',
-			data: {
-				labels: ['Gen 1', 'Gen 2', 'Gen 3', 'Gen 4','Gen 5','Gen 6','Gen 7'],
-				datasets: [{
-					label: 'Non-Legendary',
-					borderColor: 'rgba(255, 99, 99)',
-					backgroundColor: 'rgba(0, 0, 0, 0)',
-					data: capGen[0]
-				},
-				{
-					label: 'Legendary',
-					borderColor: 'rgba(60, 179, 113)',
-					backgroundColor: 'rgba(0, 0, 0, 0)',
-					data: capGen[1]
-				}]
+	var avgStatsChart = new Chart('bart', {
+		type: 'line',
+		data: {
+			labels: ['Gen 1', 'Gen 2', 'Gen 3', 'Gen 4','Gen 5','Gen 6','Gen 7'],
+			datasets: [{
+				label: 'Non-Legendary',
+				borderColor: 'rgba(255, 99, 99)',
+				backgroundColor: 'rgba(0, 0, 0, 0)',
+				data: capGen[0]
 			},
-			options: {
-				maintainAspectRatio:false
-				
-			}
+			{
+				label: 'Legendary',
+				borderColor: 'rgba(60, 179, 113)',
+				backgroundColor: 'rgba(0, 0, 0, 0)',
+				data: capGen[1]
+			}]
+		},
+		options: {
+			maintainAspectRatio:false
 
-		});
-	}
+		}
+
+	});
+}
+
+function genCount(pkmn){
+
+	var genCtLabels= [], genCtVals= [], prev;
+
+	pkmn.forEach(e => {
+		if(e.generation !== prev) {
+			genCtLabels.push(e.generation);
+			genCtVals.push(1);
+		} else {
+			genCtVals[genCtVals.length-1]++;
+		}
+		prev= e.generation;
+	})
+	
+	var typeChart = new Chart('mart', {
+		type: 'line',
+		data: {
+			labels: ['Gen 1', 'Gen 2', 'Gen 3', 'Gen 4','Gen 5','Gen 6','Gen 7'],
+			datasets: [{
+				label: 'Overall Count',
+				borderColor: 'rgba(90, 172, 231)',
+				backgroundColor: 'rgba(0, 0, 0, 0)',
+				data: genCtVals
+			}]
+		},
+		options: {
+			maintainAspectRatio:false
+
+		}
+
+	});
+}
